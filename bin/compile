@@ -11,6 +11,8 @@ function indent() {
 }
 
 unset GIT_DIR
+# https://discuss.pivotal.io/hc/en-us/articles/218106877-Java-Buildpack-Staging-Error-status-223-when-Deploying-a-New-Java-Buildpack
+umask 0022 
 
 for BUILDPACK in $(cat $1/.cfbuildpacks); do
   dir=$(mktemp -t buildpackXXXXX)
