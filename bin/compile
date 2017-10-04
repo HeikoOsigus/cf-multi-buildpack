@@ -22,6 +22,7 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
   if [ "$branch" == "$url" ]; then
     branch=""
   fi
+  echo "Branch: $branch"
 
   if [ "$url" != "" ]; then
     echo "=====> Downloading Buildpack: $url"
@@ -37,8 +38,9 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
       fi
     fi
     cd $dir
-
+    
     if [ "$branch" != "" ]; then
+      echo "======> Get Branch: $branch"
       git checkout $branch >/dev/null 2>&1
     fi
 
