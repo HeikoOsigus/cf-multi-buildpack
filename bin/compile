@@ -44,14 +44,14 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
     fi
 
     # we'll get errors later if these are needed and don't exist   
-    if [ -f $dir/bin/detect ] then
-      chmod -f +x +r +w $dir/bin/detect
+    if [ -f "$dir/bin/detect" ]; then
+      chmod -f +x +r +w "$dir/bin/detect"
     fi
-    if [ -f $dir/bin/compile ] then
-      chmod -f +x +r +w $dir/bin/compile
+    if [ -f "$dir/bin/compile" ]; then
+      chmod -f +x +r +w "$dir/bin/compile"
     fi
-    if [ -f $dir/bin/release ] then
-      chmod -f +x +r +w $dir/bin/release
+    if [ -f "$dir/bin/release" ]; then
+      chmod -f +x +r +w "$dir/bin/release"
     fi
     ls -l $dir/bin/
     
