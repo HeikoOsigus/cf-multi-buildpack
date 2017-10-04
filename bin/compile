@@ -64,13 +64,13 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
       source $dir/export
     fi
 
-    if [ -x $dir/bin/release ]; then
+    if [ ! -e $1/last_pack_release.out ] && [ -x $dir/bin/release ]; then
       $dir/bin/release $1 > $1/last_pack_release.out
     fi
   fi
 done
 
 if [ -e $1/last_pack_release.out ]; then
-  echo "Using release configuration from last framework ($framework)."
+  echo "Using release configuration from first framework."
   cat $1/last_pack_release.out
 fi
