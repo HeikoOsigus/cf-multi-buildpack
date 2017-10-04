@@ -47,15 +47,24 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
     if [ -f "$dir/bin/detect" ]; then
       echo "chmod on $dir/bin/detect"
       chmod -f +x +r +w $dir/bin/detect
+    else 
+      echo "File $dir/bin/detect not found"
     fi
+
     if [ -f "$dir/bin/compile" ]; then
       echo "chmod on $dir/bin/compile"
       chmod -f +x +r +w $dir/bin/compile
+    else 
+      echo "File $dir/bin/compile not found"
     fi
+
     if [ -f "$dir/bin/release" ]; then
       echo "chmod on $dir/bin/release"
       chmod -f +x +r +w $dir/bin/release
+    else 
+      echo "File $dir/bin/release not found"
     fi
+    echo "ls bin folder: "
     ls -l $dir/bin/
     
     framework=$($dir/bin/detect $1 || true)
