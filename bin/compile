@@ -45,8 +45,9 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
     fi
 
     # we'll get errors later if these are needed and don't exist
-    chmod -f +x+r+w $dir/bin/{detect,compile,release} || true
-    ls -l $dir/bin/
+    echo ls -l $dir/bin/
+    chmod -f +x +r +w $dir/bin/{detect,compile,release} || true
+    echo ls -l $dir/bin/
     
     framework=$($dir/bin/detect $1 || true)
     if [ $? == 0 ]; then
