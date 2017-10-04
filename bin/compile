@@ -22,8 +22,7 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
   if [ "$branch" == "$url" ]; then
     branch=""
   fi
-  echo "Branch: $branch"
-
+  
   if [ "$url" != "" ]; then
     echo "=====> Downloading Buildpack: $url"
 
@@ -44,10 +43,9 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
       git checkout $branch >/dev/null 2>&1
     fi
 
-    # we'll get errors later if these are needed and don't exist
-    echo ls -l $dir/bin/
+    # we'll get errors later if these are needed and don't exist    
     chmod -f +x +r +w $dir/bin/{detect,compile,release} || true
-    echo ls -l $dir/bin/
+    ls -l $dir/bin/
     
     framework=$($dir/bin/detect $1 || true)
     if [ $? == 0 ]; then
