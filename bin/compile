@@ -42,7 +42,7 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
       echo "======> Get Branch: $branch"
       git checkout $branch >/dev/null 2>&1
     fi
-
+    echo "Check FileMode on detect, compile and release script"
     # we'll get errors later if these are needed and don't exist   
     if [ -f "$dir/bin/detect" ]; then
       echo "chmod on $dir/bin/detect"
