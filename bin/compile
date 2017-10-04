@@ -43,30 +43,8 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
       git checkout $branch >/dev/null 2>&1
     fi
     echo "Check FileMode on detect, compile and release script"
-    # we'll get errors later if these are needed and don't exist   
-    if [ -f "$dir/bin/detect" ]; then
-      echo "chmod on $dir/bin/detect"
-      chmod -f +x +r +w "$dir/bin/detect"
-    else 
-      echo "File $dir/bin/detect not found"
-    fi
-    echo "Check compile"
-    if [ -f "$dir/bin/compile" ]; then
-      echo "chmod on $dir/bin/compile"
-      chmod -f +x +r +w "$dir/bin/compile"
-    else 
-      echo "File $dir/bin/compile not found"
-    fi
-    echo "Check release"
-    if [ -f "$dir/bin/release" ]; then
-      echo "chmod on $dir/bin/release"
-      chmod -f +x +r +w "$dir/bin/release"
-    else 
-      echo "File $dir/bin/release not found"
-    fi
-    echo "ls bin folder: "
-    ls -l $dir/bin/
-    
+    chmod -f -R +x +r +w "$dir/bin"
+        
     framework=$($dir/bin/detect $1 || true)
     if [ $? == 0 ]; then
       echo "=====> Detected Framework: $framework"
