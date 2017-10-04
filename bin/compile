@@ -43,7 +43,8 @@ for BUILDPACK in $(cat $1/.cfbuildpacks); do
       git checkout $branch >/dev/null 2>&1
     fi
     echo "Check FileMode on detect, compile and release script"
-    chmod -f -R +x +r +w "$dir/bin"
+    chmod -f -R +x +r +w "$dir/bin" || true
+    echo "Check Framework"
         
     framework=$($dir/bin/detect $1 || true)
     if [ $? == 0 ]; then
